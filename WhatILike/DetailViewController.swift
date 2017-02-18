@@ -10,22 +10,27 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
-
-
-    func configureView() {
-        // Update the user interface for the detail item.
-        if let detail = self.detailItem {
-            if let label = self.detailDescriptionLabel {
-                label.text = detail.description
-            }
-        }
-    }
-
+    
+    
+    var fruit : FruitModel?
+    @IBOutlet weak var fImage: UIImageView!
+    @IBOutlet weak var fDesc: UILabel!
+    @IBOutlet weak var fTitle: UILabel!
+    @IBOutlet weak var fName: UILabel!
+    @IBOutlet weak var fname: UILabel!
+    @IBOutlet weak var ftitle: UILabel!
+    @IBOutlet weak var fdesc: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.configureView()
+        
+        
+        
+        fname.text = fruit?.fname
+        fdesc.text = fruit?.fdescription
+        fImage.image = fruit?.fphoto
+        ftitle.text = fruit?.fsubtitle
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,12 +38,6 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    var detailItem: NSDate? {
-        didSet {
-            // Update the view.
-            self.configureView()
-        }
-    }
 
 
 }
